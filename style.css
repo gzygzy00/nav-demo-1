@@ -15,6 +15,11 @@ ul, li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 /*style*/
 body {
   background-color: #eeeeee;
@@ -102,9 +107,10 @@ body {
   margin-top: 10px;
   max-width: 120px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.siteList .last{
+.siteList .last {
 
 }
 
