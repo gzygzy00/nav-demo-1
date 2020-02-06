@@ -1,51 +1,74 @@
 const $siteList = $('.siteList')
 const $lastLi = $siteList.find('li.last')
-let siteUrl, siteIndex, siteLogo
-let siteObj = {}
 
 // 存储数据
 const mySites = localStorage.getItem('mySites')
 const initSites = JSON.parse(mySites)
 const hashMap = initSites || [
   {
-    url: 'https://www.acfun.cn',
-    logo: 'A'
+    url: 'https://ncov.dxy.cn/ncovh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=groupmessage&isappinstalled=0',
+    logo: '丁'
   },
   {
-    url: 'https://www.bilibili.com',
+    url: 'http://www.people.com.cn/',
+    logo: '人'
+  },
+  {
+    url: 'http://www.bilibili.com/',
     logo: 'B'
   }
 ]
+
+// 正则
+const simplify = (str) => {
+  return str.replace('https://', '')
+      .replace('http://', '')
+      .replace('www.', '')
+      .replace(/(\/.*)|(^\.)/, '') // 删除 / 开头和开头是 . 的内容
+      .replace(/\.?(?<=\.).*$/, '') // 删除域名第一个 . 之后的内容
+}
 
 // 渲染
 const render = () => {
   $siteList.find('li:not(.last)').remove()
   hashMap.forEach((obj, i) => {
-    const $li = $(`<a href="${obj.url}">
-      <li class="site">
+    const $li = $(`<li class="site" title="${obj.url}">
         <div class="logo">${obj.logo}</div>
-        <div class="link">${obj.url}</div>
-      </li>
-    </a>`)
+        <div class="link">${simplify(obj.url)}</div>
+        <div class="icon-wrapper">
+          <svg class="icon close">
+            <use xlink:href="#icon-close"></use>
+          </svg>
+        </div>
+      </li>`)
     $li.insertBefore($lastLi)
+    $li.on('click', () => {
+      window.open(obj.url)
+    })
+    $li.on('click', '.close', (e) => {
+      e.stopPropagation() // 阻止冒泡
+      hashMap.splice(i,1)
+      render()
+    })
   })
 }
-
 render()
 
 // 新增网页
-$('.addButton').on('click', () => {
+$('.site.last').on('click', () => {
   let url = window.prompt('请输入网址')
   if (url.indexOf('https://') === -1) {
     url = `https://${url}`
   }
-  let logo = url[8].toUpperCase()
-  siteObj.url = url
-  siteObj.logo = logo
-  // console.log(siteObj)
-  hashMap.push(siteObj)
+  console.log(url)
+  console.log(hashMap)
+  hashMap.push({
+    url: url,
+    logo: simplify(url)[0].toUpperCase()
+  })
   // console.log(hashMap)
   render()
+  window.scrollTo(0, 99999)
 })
 
 // 保存
