@@ -30,19 +30,19 @@ const hashMap = initSites || [
     logo: 'D'
   },
   {
-    url: 'https://gzygzy00.github.io/cv/',
+    url: 'https://gzygzy00.github.io/cv',
     logo: 'D'
   },
   {
-    url: 'https://gzygzy00.github.io/music-player/',
+    url: 'https://gzygzy00.github.io/music-player',
     logo: 'M'
   },
   {
-    url: 'https://github.com/gzygzy00/DB_top250',
+    url: 'https://gzygzy00.github.io/DB_top250',
     logo: 'T'
   },
   {
-    url: 'https://gzygzy00.github.io/canvas-demo-1/',
+    url: 'https://gzygzy00.github.io/canvas-demo-1',
     logo: 'C'
   },
 ];
