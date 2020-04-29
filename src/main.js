@@ -29,6 +29,22 @@ const hashMap = initSites || [
     url: 'https://gzygzy00.github.io/DrawCUPHEAD/dist/index.html',
     logo: 'D'
   },
+  {
+    url: 'https://gzygzy00.github.io/cv/',
+    logo: 'D'
+  },
+  {
+    url: 'https://gzygzy00.github.io/music-player/',
+    logo: 'M'
+  },
+  {
+    url: 'https://github.com/gzygzy00/DB_top250',
+    logo: 'T'
+  },
+  {
+    url: 'https://gzygzy00.github.io/canvas-demo-1/',
+    logo: 'C'
+  },
 ];
 
 // 正则
@@ -37,8 +53,8 @@ const simplify = (str) => {
     return '个人博客';
   } else if (str.indexOf('https://gzygzy00.github.io/') >= 0 && str !== 'https://gzygzy00.github.io/') {
     return str.replace('https://gzygzy00.github.io/', '')
-      .replace(/\/dist\/.*$/, '')
-  }else{
+      .replace(/\/dist\/.*$/, '');
+  } else {
     return str.replace('https://', '')
       .replace('http://', '')
       .replace('www.', '')
