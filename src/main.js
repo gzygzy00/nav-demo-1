@@ -31,7 +31,7 @@ const hashMap = initSites || [
   },
   {
     url: 'https://gzygzy00.github.io/cv',
-    logo: 'D'
+    logo: '简'
   },
   {
     url: 'https://gzygzy00.github.io/music-player',
@@ -39,11 +39,11 @@ const hashMap = initSites || [
   },
   {
     url: 'https://gzygzy00.github.io/DB_top250',
-    logo: 'T'
+    logo: '榜'
   },
   {
     url: 'https://gzygzy00.github.io/canvas-demo-1',
-    logo: 'C'
+    logo: '画'
   },
 ];
 
